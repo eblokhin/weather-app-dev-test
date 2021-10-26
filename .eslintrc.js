@@ -2,7 +2,7 @@ module.exports = {
   extends: [
     'plugin:@typescript-eslint/recommended',
     'plugin:jest/recommended',
-    'plugin:prettier/recommended'
+    'plugin:prettier/recommended',
   ],
   plugins: ['react', '@typescript-eslint', 'jest'],
   env: {
@@ -19,9 +19,8 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: 2018,
+    ecmaVersion: 2021,
     sourceType: 'module',
-    project: './tsconfig.json',
   },
   rules: {
     'linebreak-style': 'off',
@@ -29,8 +28,8 @@ module.exports = {
       'error',
       {
         endOfLine: 'auto',
-        semi: false
+        semi: false,
       },
-    ]
+    ],
   },
 }
