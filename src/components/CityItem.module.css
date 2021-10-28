@@ -1,0 +1,38 @@
+.block {
+  @apply bg-white rounded-3xl relative;
+}
+
+.removeButton {
+  @apply rounded-full bg-center bg-no-repeat w-12 h-12 overflow-hidden transition-colors; 
+  @apply border border-gray-200 hover:bg-gray-100 focus:bg-gray-100;
+  @apply absolute top-6 right-6;
+  background-image: url('assets/svg-icons/Delete.svg')
+}
+
+.title {
+  @apply text-sm mb-5 uppercase tracking-wider text-purple-100;
+}
+
+.weatherStatusIcon {
+  @apply w-12 h-12;
+}
+
+.infoSection {
+  @apply p-6 pl-8;
+}
+
+.infoSection:first-child {
+  @apply pr-24
+}
+
+.infoSection + .infoSection {
+  @apply border-t border-gray-200;
+}
+
+.measurements {
+  @apply flex;
+}
+
+.measurementItem + .measurementItem {
+  @apply ml-8
+}
