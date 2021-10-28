@@ -36,6 +36,14 @@
   }
 
   body {
-    @apply bg-main-bg
+    @apply bg-main-bg;
+  }
+
+  .sr-hidden {
+    @apply absolute overflow-hidden whitespace-nowrap border-0;
+    width: 1px;
+    height: 1px;
+    margin-left: -1px;
+    clip: rect(0, 0, 0, 0);
   }
 }
