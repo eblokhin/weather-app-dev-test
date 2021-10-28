@@ -1,0 +1,8 @@
+$icons: '01', '02', '03', '04', '09', '10', '11', '50'
+$varieties: d,n
+
+@each $icon in $icons
+  @each $variety in $varieties
+    .icon-#{$icon}#{$variety}
+      background-image: url('/assets/weather-icons/#{$icon}#{$variety}@2x.png')
+      @apply bg-center bg-cover
