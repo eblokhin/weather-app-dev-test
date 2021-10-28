@@ -2,6 +2,7 @@ import type { FunctionComponent } from 'react'
 
 import Header from 'components/Header'
 import CityItem from 'components/CityItem'
+import Spinner from 'components/Spinner'
 import TCity from 'models/City'
 
 const App: FunctionComponent = () => {
@@ -20,6 +21,7 @@ const App: FunctionComponent = () => {
     <div className="container max-w-5xl mx-auto">
       <Header />
       <CityItem city={tempCity} />
+      <Spinner />
     </div>
   )
 }
