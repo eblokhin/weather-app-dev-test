@@ -19,7 +19,7 @@
   
   @font-face {
     font-family: "PT Root";
-    font-weight: 500;
+    font-weight: 300;
     font-style: normal;
     src: url("assets/fonts/PT Root UI_Medium.ttf") format("opentype");
   }
@@ -37,13 +37,5 @@
 
   body {
     @apply bg-main-bg;
-  }
-
-  .sr-hidden {
-    @apply absolute overflow-hidden whitespace-nowrap border-0;
-    width: 1px;
-    height: 1px;
-    margin-left: -1px;
-    clip: rect(0, 0, 0, 0);
   }
 }
