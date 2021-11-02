@@ -1,4 +1,4 @@
-// https://codepen.io/aleksander351/pen/KzgKPo
+// cloned from https://mui.com/components/progress/
 import type { FunctionComponent } from 'react'
 
 import cn from 'classnames'
