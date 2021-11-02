@@ -1,0 +1,27 @@
+$pad-right: 26px
+$pad-left: 24px
+
+.item
+  @apply block py-5 pr-7 relative transition-colors hover:bg-gray-100 hover:text-purple-100 cursor-pointer
+  padding-right: $pad-right + 28px
+  padding-left: $pad-left
+
+  &:first-child
+    @apply rounded-t-lg
+
+  &:last-child
+    @apply rounded-b-lg
+
+.item + .item
+  @apply mt-px
+
+  &::before
+    @apply block absolute h-px bg-gray-200 -top-px pointer-events-none
+    content: ''
+    left: $pad-left
+    right: $pad-right
+
+.addIcon
+  @apply absolute top-1/2 transform -translate-y-1/2
+  right: $pad-right  
+  

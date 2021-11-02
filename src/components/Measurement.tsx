@@ -1,9 +1,9 @@
-import type { FunctionComponent } from 'react'
-import type { TMeasurementType } from 'models/MeasurementType'
+import type { FunctionComponent, ReactElement } from 'react'
+import { MeasurementType, TMeasurementType } from 'models/MeasurementType'
 
 import cn from 'classnames'
 
-import MeasurementIcon from 'components/MeasurementIcon'
+import * as SvgIcon from 'components/SvgIcon'
 import { getMeasurementString } from 'utils/weatherMeasurements'
 
 interface IProps {
@@ -13,7 +13,20 @@ interface IProps {
 }
 
 const Measurement: FunctionComponent<IProps> = ({ type, value, className }) => {
-  const icon = <MeasurementIcon type={type} />
+  let icon: ReactElement | null = null
+
+  switch (type) {
+    case MeasurementType.Humidity:
+      icon = <SvgIcon.Humidity />
+      break
+    case MeasurementType.Pressure:
+      icon = <SvgIcon.Pressure />
+      break
+    case MeasurementType.Wind:
+      icon = <SvgIcon.Wind />
+      break
+  }
+
   const text = getMeasurementString(type, value)
 
   return (
