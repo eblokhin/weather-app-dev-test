@@ -1,6 +1,8 @@
 import { MeasurementType, TMeasurementType } from 'models/MeasurementType'
 
-export const getMeasurementString = (type: TMeasurementType, value: number): string | null => {
+export const getMeasurementString = (type: TMeasurementType, value: number | undefined): string | null => {
+  if (!value) return null
+
   switch (type) {
     case MeasurementType.Humidity:
       return `${value} %`
