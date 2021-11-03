@@ -9,7 +9,7 @@ export default class City implements ICity {
   name = ''
   countryId = ''
   latLong: [lat: number, lon: number] = [0, 0]
-  initialized = false
+  initialized = false // indicates that item was successfully initialized
   pending = false
   error = false
   weatherData?: IWeatherData
@@ -33,6 +33,7 @@ export default class City implements ICity {
 
   *fetch(): Generator<Promise<IAPIResponse<IWeatherData | undefined>>, City, IAPIResponse<IWeatherData>> {
     this.pending = true
+    this.error = false
 
     const apiArgs = this.weatherData
       ? {
@@ -46,7 +47,6 @@ export default class City implements ICity {
     const result: IAPIResponse<IWeatherData> = yield getWeatherByIdOrName(apiArgs)
 
     this.pending = false
-    this.error = false
 
     if (result.success && result.data) {
       this.initialized = true
