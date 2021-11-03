@@ -1,5 +1,6 @@
 .block
-  @apply bg-white rounded-3xl relative
+  @apply bg-white rounded-3xl relative flex flex-col
+  min-height: calc(15rem + 1px)
 
 .removeButton
   @apply rounded-full bg-center bg-no-repeat w-12 h-12 overflow-hidden transition-colors
@@ -20,7 +21,7 @@
   @apply p-6 pl-8
 
 .infoSection:first-child
-  @apply pr-24
+  @apply pr-24 flex-auto
 
 .infoSection + .infoSection
   @apply border-t border-gray-200
@@ -30,3 +31,6 @@
 
 .measurementItem + .measurementItem
   @apply ml-8
+
+.spinner
+  @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
