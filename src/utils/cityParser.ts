@@ -1,21 +1,26 @@
 import type { IWeatherData, TCityInfo } from 'models/City'
 
-interface ISearchItemResult {
+export interface IParser<T = unknown, R = unknown> {
+  (data: T): R
+}
+
+interface ISearchReponseItem {
   name: string
   country: string
   lat: number
   lon: number
 }
 
-export const parseSearchItems = (items: ISearchItemResult[]): TCityInfo[] => {
+export const parseSearchItems: IParser<ISearchReponseItem[], TCityInfo[]> = (items) => {
   return items.map(({ name, country, lat, lon }) => ({
     name,
-    countryID: country,
+    countryId: country,
     latLong: [lat, lon],
   }))
 }
 
 interface IWeatherResponse {
+  id: number
   weather: Array<{
     description: string
     icon: string
@@ -30,22 +35,24 @@ interface IWeatherResponse {
   }
 }
 
-export const parseWeather = (data: IWeatherResponse): IWeatherData => {
+export const parseWeather: IParser<IWeatherResponse, IWeatherData> = (data) => {
   const {
+    id,
     weather,
     main: { temp, pressure, humidity },
     wind: { speed: wind },
   } = data
-  const weatherIcons = weather.map(({ icon }) => icon)
-  const description = weather.map(({ description }) => description).join(', ')
-  const weatherDescription = description.charAt(0).toUpperCase() + description.slice(1)
+  const icons = weather.map(({ icon }) => icon)
+  const descriptionRaw = weather.map(({ description }) => description).join(', ')
+  const description = descriptionRaw.charAt(0).toUpperCase() + descriptionRaw.slice(1)
 
   return {
+    id,
     temp,
     humidity,
     pressure,
     wind,
-    weatherDescription,
-    weatherIcons,
+    description,
+    icons,
   }
 }
