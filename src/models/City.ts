@@ -1,32 +1,21 @@
-import { runInAction, makeAutoObservable } from 'mobx'
-
 export interface IWeatherData {
+  id: number
   temp: number
   humidity: number
   wind: number
   pressure: number
-  weatherDescription: string
-  weatherIcons: string[]
+  description: string
+  icons: string[]
 }
 
-export interface ICity extends IWeatherData {
-  id?: number
+export interface ICity {
+  key: string
   name: string
-  countryID: string
+  countryId: string
   latLong: [lat: number, lon: number]
   initialized: boolean
+  pending: boolean
+  weatherData?: IWeatherData
 }
 
-export type TCityInfo = Pick<ICity, 'name' | 'countryID' | 'latLong'>
-
-class CityAutocomplete {
-  items: TCityInfo[] = []
-
-  constructor() {
-    makeAutoObservable(this)
-  }
-
-  async getItems() {
-    
-  }
-}
+export type TCityInfo = Pick<ICity, 'name' | 'countryId' | 'latLong'>
