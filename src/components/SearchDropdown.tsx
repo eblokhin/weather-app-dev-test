@@ -1,28 +1,37 @@
-import type { FunctionComponent, ReactFragment, ReactElement } from 'react'
+import { FunctionComponent, ReactFragment, ReactElement, useCallback } from 'react'
+import type CityAutocomplete from 'store/cityAutocomplete'
+import type { TCityInfo } from 'models/City'
 
 import cn from 'classnames'
+import { observer } from 'mobx-react-lite'
 
 import Dropdown from 'components/Dropdown'
 import Spinner from './Spinner'
-import { TCityInfo } from 'models/City'
 
 import styles from 'components/SearchDropdown.module.sass'
-import SearchDropdownItem from './SearchDropdownItem'
+import SearchDropdownItemsList from './SearchDropdownItemsList'
 
 interface IProps {
   isOpen?: boolean
-  items?: TCityInfo[]
-  loading?: boolean
-  searchTerm?: string
-  addItem: (item: TCityInfo) => void
+  onPick: (item: TCityInfo) => void
+  autoCompleteStore: CityAutocomplete
 }
 
-const SearchDropdown: FunctionComponent<IProps> = ({ isOpen, loading, items, searchTerm, addItem }) => {
+const SearchDropdown: FunctionComponent<IProps> = function SearchDropdown({ isOpen, autoCompleteStore, onPick }) {
   let content: ReactFragment | ReactElement | null = null
+  const { pending, items, term: searchTerm } = autoCompleteStore
   const classNames = []
+
+  const onPickCb = useCallback(
+    (item: TCityInfo) => {
+      onPick(item)
+    },
+    [onPick],
+  )
+
   if (!isOpen) {
     content = null
-  } else if (loading) {
+  } else if (pending) {
     classNames.push(styles.dropdownText)
     content = <Spinner />
   } else if (items && !items.length && searchTerm) {
@@ -37,7 +46,7 @@ const SearchDropdown: FunctionComponent<IProps> = ({ isOpen, loading, items, sea
       </>
     )
   } else if (items && items.length) {
-    content = items.map((item) => <SearchDropdownItem item={item} addItem={addItem} />)
+    content = <SearchDropdownItemsList items={items} onPick={onPickCb} />
   }
 
   return (
@@ -47,4 +56,4 @@ const SearchDropdown: FunctionComponent<IProps> = ({ isOpen, loading, items, sea
   )
 }
 
-export default SearchDropdown
+export default observer(SearchDropdown)
