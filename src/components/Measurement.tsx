@@ -8,7 +8,7 @@ import { getMeasurementString } from 'utils/weatherMeasurements'
 
 interface IProps {
   type: TMeasurementType
-  value: number
+  value?: number
   className?: string
 }
 
@@ -27,7 +27,7 @@ const Measurement: FunctionComponent<IProps> = ({ type, value, className }) => {
       break
   }
 
-  const text = getMeasurementString(type, value)
+  const text = value ? getMeasurementString(type, value) : null
 
   return (
     <div className={cn('flex items-center', className)}>
