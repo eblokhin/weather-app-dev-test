@@ -8,7 +8,6 @@ import cn from 'classnames'
 import styles from './SearchInput.module.sass'
 import SearchDropdown from './SearchDropdown'
 import CityAutocomplete from 'store/cityAutocomplete'
-import useWindowEvent from 'hooks/useWindowEvent'
 
 interface IProps {
   className?: string
@@ -21,14 +20,6 @@ const SearchInput: FunctionComponent<IProps> = ({ className, store, addItem }) =
 
   const formRef = useRef<HTMLFormElement>(null)
   const [isOpen, setIsOpen] = useState(false)
-
-  const onClickFocus = useCallback((e) => {
-    if (formRef.current && e.target instanceof Node && !formRef.current.contains(e.target)) {
-      if (isOpen) setIsOpen(false)
-    }
-  }, [])
-
-  useWindowEvent('click', onClickFocus)
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault()
@@ -61,7 +52,14 @@ const SearchInput: FunctionComponent<IProps> = ({ className, store, addItem }) =
   return (
     <form className={cn(styles.form, className)} onSubmit={onSubmit} ref={formRef}>
       <div className={styles.inputGroup}>
-        <input autoComplete="off" className={styles.input} type="text" name="term" placeholder="Search" />
+        <input
+          autoComplete="off"
+          className={styles.input}
+          type="text"
+          name="term"
+          placeholder="Search"
+          onBlur={() => setIsOpen(false)}
+        />
         <button className={styles.button} type="submit">
           <span className="sr-only">Search</span>
         </button>
