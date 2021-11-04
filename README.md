@@ -1,6 +1,6 @@
 # Simple Weather App
 
-This is a simple weather tracking app powered by [react](https://github.com/facebook/create-react-app), [mobx](https://mobx.js.org/README.html) and [OpenWeather API](https://openweathermap.org/current#name) 
+This is a simple weather tracking app powered by [react](https://github.com/facebook/create-react-app), [mobx](https://mobx.js.org/README.html), [Tailwind CSS](https://tailwindcss.com/) and [OpenWeather API](https://openweathermap.org/current#name) 
 
 ![Weather App](/docs/weather-app.png)
 
