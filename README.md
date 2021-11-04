@@ -1,6 +1,8 @@
-# Getting Started with Create React App
+# Simple Weather App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a simple weather tracking app powered by [react](https://github.com/facebook/create-react-app), [mobx](https://mobx.js.org/README.html) and [OpenWeather API](https://openweathermap.org/current#name) 
+
+![Weather App](/docs/weather-app.png)
 
 ## Available Scripts
 
@@ -21,23 +23,30 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 ### `yarn build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Builds the app for production to the `build` folder.
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `yarn analyze`
+
+Requires a production build made. Opens a UI to analyze bundle size.
+
+### `yarn eslint`
+
+Runs code validation and formatter. Uses eslint configurations for react, prettier and typescript
 
 ### `yarn eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Instead of ejecting consider changing default react-scripts configurations with [craco](https://github.com/gsoft-inc/craco) which already enabled in this repo. 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+To debug craco setup there's a VS code `.vscode/launch.json` file with debug configuration
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Static icons
+
+There's a special script to download weather icons assets from open weather. Check out `bin/download.sh`.
+To make it executable run `sudo chmod +x ./bin/download.sh` on linux and macos
 
 ## Learn More
 
