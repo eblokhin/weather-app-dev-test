@@ -39,13 +39,13 @@ Runs code validation and formatter. Uses eslint configurations for react, pretti
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-Instead of ejecting consider changing default react-scripts configurations with [craco](https://github.com/gsoft-inc/craco) which already enabled in this repo. 
+Instead of ejecting consider changing default react-scripts configurations with [craco](https://github.com/gsoft-inc/craco) which is already included in this repo. 
 
 To debug craco setup there's a VS code `.vscode/launch.json` file with debug configuration
 
 ## Static icons
 
-There's a special script to download weather icons assets from open weather. Check out `bin/download.sh`.
+There's a special script available to download weather icons assets from open weather. Check out `bin/download.sh`.
 To make it executable run `sudo chmod +x ./bin/download.sh` on linux and macos
 
 ## Learn More
@@ -53,3 +53,8 @@ To make it executable run `sudo chmod +x ./bin/download.sh` on linux and macos
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+OpenWeather API links:
+* [Current weather](https://openweathermap.org/current#name)
+* [Geocoding](https://openweathermap.org/api/geocoding-api)
+* [Icon assets](https://openweathermap.org/weather-conditions)
