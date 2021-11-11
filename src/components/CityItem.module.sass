@@ -24,13 +24,17 @@
   @apply pr-24 flex-auto
 
 .infoSection + .infoSection
-  @apply border-t border-gray-200
+  @apply border-t border-gray-200 pt-4
 
 .measurements
   @apply flex flex-wrap
 
 .measurementItem
-  @apply mr-8
+  @apply mt-2 whitespace-nowrap
+  margin-right: 6vmin
+
+  @screen sm
+    @apply mr-8
 
   &:last-child
     @apply mr-0
