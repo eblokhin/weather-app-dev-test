@@ -27,10 +27,13 @@
   @apply border-t border-gray-200
 
 .measurements
-  @apply flex
+  @apply flex flex-wrap
 
-.measurementItem + .measurementItem
-  @apply ml-8
+.measurementItem
+  @apply mr-8
+
+  &:last-child
+    @apply mr-0
 
 .spinner
   @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
