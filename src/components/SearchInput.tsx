@@ -22,11 +22,14 @@ const SearchInput: FunctionComponent<IProps> = ({ className, store, addItem }) =
   const formRef = useRef<HTMLFormElement>(null)
   const [isOpen, setIsOpen] = useState(false)
 
-  const onClickFocus = useCallback((e) => {
-    if (formRef.current && e.target instanceof Node && !formRef.current.contains(e.target)) {
-      if (isOpen) setIsOpen(false)
-    }
-  }, [])
+  const onClickFocus = useCallback(
+    (e) => {
+      if (formRef.current && e.target instanceof Node && !formRef.current.contains(e.target)) {
+        if (isOpen) setIsOpen(false)
+      }
+    },
+    [isOpen],
+  )
 
   useWindowEvent('click', onClickFocus)
 

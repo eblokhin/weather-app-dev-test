@@ -7,7 +7,7 @@ const useWindowEvent = (eventType: keyof WindowEventMap, handler: (e: Event) => 
     return () => {
       window.removeEventListener(eventType, handler)
     }
-  }, [])
+  })
 }
 
 export default useWindowEvent
